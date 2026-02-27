@@ -47,13 +47,14 @@ def main():
         if len(items) >= MAX_ITEMS:
             break
 
-    fg = FeedGenerator()
-    fg.id(FEED_LINK)
-    fg.title(FEED_TITLE)
-    fg.link(href=FEED_LINK, rel="alternate")
-    fg.link(href="rss.xml", rel="self")
-    fg.language("pl")
-    fg.updated(datetime.now(timezone.utc))
+fg = FeedGenerator()
+fg.id(FEED_LINK)
+fg.title(FEED_TITLE)
+fg.description("Automatycznie generowany RSS na podstawie listingu /pepites/ w serwisie WszystkoCoNajważniejsze.")
+fg.link(href=FEED_LINK, rel="alternate")
+fg.link(href="rss.xml", rel="self")
+fg.language("pl")
+fg.updated(datetime.now(timezone.utc))
 
     for title, url, desc in items:
         fe = fg.add_entry()

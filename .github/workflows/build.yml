@@ -25,6 +25,8 @@ jobs:
 
       - name: Generate rss.xml
         run: python generate_rss.py
+        env:
+          FEED_SELF_URL: ${{ vars.FEED_SELF_URL }}
 
       - name: Commit rss.xml
         run: |

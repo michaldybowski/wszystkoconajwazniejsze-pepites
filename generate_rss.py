@@ -1,5 +1,6 @@
 import re
 import requests
+import os
 from bs4 import BeautifulSoup
 from datetime import datetime, timezone
 from feedgen.feed import FeedGenerator
@@ -52,8 +53,8 @@ fg.id(FEED_LINK)
 fg.title(FEED_TITLE)
 fg.description("Automatycznie generowany RSS na podstawie listingu /pepites/ w serwisie WszystkoCoNajważniejsze.")
 fg.link(href=FEED_LINK, rel="alternate")
-fg.link(href="rss.xml", rel="self")
-fg.language("pl")
+SELF_URL = os.getenv("FEED_SELF_URL", "rss.xml")
+fg.link(href=SELF_URL, rel="self")fg.language("pl")
 fg.updated(datetime.now(timezone.utc))
 
     for title, url, desc in items:
